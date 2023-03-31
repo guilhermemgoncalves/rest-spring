@@ -1,11 +1,9 @@
 package com.guilherme.firststeps.services;
 
 import com.guilherme.firststeps.data.vo.v1.PersonVOV1;
-import com.guilherme.firststeps.data.vo.v2.PersonVOV2;
 import com.guilherme.firststeps.exceptions.ResourceNotFoundException;
 
 import com.guilherme.firststeps.mapper.DozerMapper;
-import com.guilherme.firststeps.mapper.custom.PersonMapper;
 import com.guilherme.firststeps.model.Person;
 import com.guilherme.firststeps.respositories.PersonRepository;
 import org.slf4j.Logger;
@@ -19,13 +17,10 @@ import java.util.List;
 public class PersonServices {
 
 
-    private Logger logger = LoggerFactory.getLogger(PersonServices.class);
+    private final Logger logger = LoggerFactory.getLogger(PersonServices.class);
 
     @Autowired
     PersonRepository personRepository;
-
-    @Autowired
-    PersonMapper personMapper;
 
     public PersonVOV1 findById(Long id){
         logger.info("Finding one person!");
@@ -72,13 +67,5 @@ public class PersonServices {
         personRepository.delete(entity);
         logger.info("Deleting Person");
 
-    }
-
-    public PersonVOV2 createV2(PersonVOV2 person) {
-        logger.info("Creating Person");
-        var entity = personMapper.convertVOToEntity(person);
-        personRepository.save(entity);
-        var vo = personMapper.convertEntityToVO(entity);
-        return vo;
     }
 }

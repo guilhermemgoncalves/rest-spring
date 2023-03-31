@@ -2,7 +2,6 @@ package com.guilherme.firststeps;
 
 import com.guilherme.firststeps.data.vo.v1.PersonVOV1;
 
-import com.guilherme.firststeps.data.vo.v2.PersonVOV2;
 import com.guilherme.firststeps.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -35,12 +34,7 @@ public class PersonController {
     public PersonVOV1 createV1(@RequestBody PersonVOV1 person) throws Exception {
         return personServices.create(person);
     }
-    @PostMapping(path = "/v2",
-            produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
-    public PersonVOV2 createV2(@RequestBody PersonVOV2 person) throws Exception {
-        return personServices.createV2(person);
-    }
+
 
     @PutMapping(path = "",
             produces = MediaType.APPLICATION_JSON_VALUE,
