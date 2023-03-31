@@ -1,26 +1,22 @@
-package com.guilherme.firststeps.model;
-
-import jakarta.persistence.*;
+package com.guilherme.firststeps.data.vo.v1;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name = "person")
-public class Person implements Serializable {
 
+public class PersonVOV1 implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @Column(name = "first_name", nullable = false, length = 80)
+    public PersonVOV1() {
+    }
+
+    private Long id;
     private String firstName;
-    @Column(name = "last_name", nullable = false, length = 80)
+
     private String lastName;
-    @Column(nullable = false, length = 100)
+
     private String address;
-    @Column(nullable = false, length = 20)
+
     private String gender;
 
     public Long getId() {
@@ -32,7 +28,7 @@ public class Person implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Person person = (Person) o;
+        PersonVOV1 person = (PersonVOV1) o;
 
         if (!Objects.equals(id, person.id)) return false;
         if (!Objects.equals(firstName, person.firstName)) return false;
