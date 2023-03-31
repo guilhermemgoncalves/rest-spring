@@ -40,8 +40,7 @@ public class PersonServices {
         logger.info("Creating Person");
         var entity = DozerMapper.parseObject(person, Person.class);
         personRepository.save(entity);
-        var vo = DozerMapper.parseObject(personRepository.save(entity), PersonVOV1.class);
-        return vo;
+        return DozerMapper.parseObject(personRepository.save(entity), PersonVOV1.class);
     }
 
     public PersonVOV1 update(PersonVOV1 person){
@@ -55,8 +54,7 @@ public class PersonServices {
         entity.setAddress(person.getAddress());
         entity.setGender(person.getGender());
 
-        var vo = DozerMapper.parseObject(personRepository.save(entity), PersonVOV1.class);
-        return vo;
+        return DozerMapper.parseObject(personRepository.save(entity), PersonVOV1.class);
     }
 
 

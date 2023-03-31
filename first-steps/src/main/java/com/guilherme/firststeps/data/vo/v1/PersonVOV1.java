@@ -1,14 +1,15 @@
 package com.guilherme.firststeps.data.vo.v1;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
 @JsonPropertyOrder({"id","address","first_name","last_name","gender"})
 public class PersonVOV1 implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     public PersonVOV1() {

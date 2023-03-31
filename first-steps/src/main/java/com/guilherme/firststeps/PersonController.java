@@ -20,18 +20,18 @@ public class PersonController {
     private final AtomicLong counter = new AtomicLong();
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public PersonVOV1 getPersonById(@PathVariable(value = "id") Long id) throws Exception {
+    public PersonVOV1 getPersonById(@PathVariable(value = "id") Long id) {
         return personServices.findById(id);
     }
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<PersonVOV1> getPersons() throws Exception {
+    public List<PersonVOV1> getPersons() {
         return personServices.findAll();
     }
 
     @PostMapping(path = "",
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public PersonVOV1 createV1(@RequestBody PersonVOV1 person) throws Exception {
+    public PersonVOV1 createV1(@RequestBody PersonVOV1 person) {
         return personServices.create(person);
     }
 
@@ -39,12 +39,12 @@ public class PersonController {
     @PutMapping(path = "",
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public PersonVOV1 update(@RequestBody PersonVOV1 person) throws Exception {
+    public PersonVOV1 update(@RequestBody PersonVOV1 person) {
         return personServices.update(person);
     }
 
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<?> deletePerson(@PathVariable(value = "id") Long id) throws Exception {
+    public ResponseEntity<?> deletePerson(@PathVariable(value = "id") Long id) {
         personServices.delete(id);
         return ResponseEntity.noContent().build();
     }
