@@ -1,10 +1,13 @@
 package com.guilherme.firststeps;
 
+import com.guilherme.firststeps.util.MediaType;
+
 import com.guilherme.firststeps.data.vo.v1.PersonVOV1;
 
 import com.guilherme.firststeps.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,26 +22,26 @@ public class PersonController {
     private PersonServices personServices;
     private final AtomicLong counter = new AtomicLong();
 
-    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/{id}", produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
     public PersonVOV1 getPersonById(@PathVariable(value = "id") Long id) {
         return personServices.findById(id);
     }
-    @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "", produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
     public List<PersonVOV1> getPersons() {
         return personServices.findAll();
     }
 
     @PostMapping(path = "",
-            produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
+            produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
+            consumes ={MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
     public PersonVOV1 createV1(@RequestBody PersonVOV1 person) {
         return personServices.create(person);
     }
 
 
     @PutMapping(path = "",
-            produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
+            produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
+            consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
     public PersonVOV1 update(@RequestBody PersonVOV1 person) {
         return personServices.update(person);
     }
